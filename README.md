@@ -1,7 +1,7 @@
 # Unity_CustomUndo
 
 ## Description
-A static class **CustomUndo** that allows you to create custom undo and redo actions linked to the default unity system.
+A static class **CustomUndo** that allows you to create custom undo and redo actions linked to the default unity system.  
 It includes a way to store some data that will be sent to the undo and redo behaviour you define.
 
 ## Limitations
