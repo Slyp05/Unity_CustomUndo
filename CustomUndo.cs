@@ -8,10 +8,8 @@ using Object = UnityEngine.Object;
 using System.Text.RegularExpressions;
 #endif
 
-//// a mettre dans editor + add namespace
-//// use pour undo et do les DataManager changes
-//// upload sur GitHub
-static class CustomUndo
+// source: https://github.com/Slyp05/Unity_CustomUndo
+public static class CustomUndo
 {
 #if !UNITY_2022_2_OR_NEWER
     //language=regex
@@ -72,6 +70,13 @@ static class CustomUndo
 #endif
     }
 
+    /// <summary>
+    /// Call this method to do something that can be undone using the default Unity behaviour. Any assembly reload will disable the created undo/redo entry.
+    /// </summary>
+    /// <param name="name"> Undo name in the Unity UI. </param>
+    /// <param name="data"> Any value that will be sent as a parameter to <paramref name="doAction"/> and <paramref name="undoAction"/>. </param>
+    /// <param name="doAction"> Take <paramref name="data"/> as a parameter to do the thing you want to do. Will be called once automatically. </param>
+    /// <param name="undoAction"> Take <paramref name="data"/> as a parameter to undo the thing you did. </param>
     public static void DoUndoable(string name, object data, Action<object> doAction, Action<object> undoAction)
     {
         UndoableAction undoableAction = new UndoableAction(data, doAction, undoAction);
